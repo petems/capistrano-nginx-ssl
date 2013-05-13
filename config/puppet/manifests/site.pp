@@ -54,7 +54,7 @@ require => Class["nginx"]
   file {
     '/etc/ssl/openssl.cnf' :
     ensure  => present,
-    source  => template('/capistrano-nginx-ssl/capistrano-nginx-ssl/current/config/puppet/files/modules/openssl/openssl.cnf.erb');
+    source  => '/capistrano-nginx-ssl/capistrano-nginx-ssl/current/config/puppet/files/modules/openssl/openssl.cnf';
     "/etc/ssl/CA/certs" :
     ensure  => directory,
     require => File['/etc/ssl/CA'];
