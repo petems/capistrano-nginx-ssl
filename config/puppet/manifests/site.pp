@@ -24,7 +24,7 @@ file { '/etc/nginx/sites-enabled/default':
   ensure  => present,
   mode    => '0644',
   owner    => 'root',
-  source  => '/capistrano-nginx-ssl/capistrano-nginx-ssl/current/config/puppet/modules/nginx/etc/default'
+  source  => '/capistrano-nginx-ssl/capistrano-nginx-ssl/current/config/puppet/files/modules/nginx/etc/default'
 }
 
 }
@@ -54,7 +54,7 @@ require => Class["nginx"]
   file {
     '/etc/ssl/openssl.cnf' :
     ensure  => present,
-    source  => template('/capistrano-nginx-ssl/capistrano-nginx-ssl/current/config/puppet/modules/templates/openssl.cnf.erb');
+    source  => template('/capistrano-nginx-ssl/capistrano-nginx-ssl/current/config/puppet/templates/openssl.cnf.erb');
     "/etc/ssl/CA/certs" :
     ensure  => directory,
     require => File['/etc/ssl/CA'];
