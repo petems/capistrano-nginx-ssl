@@ -54,7 +54,7 @@ require => Class["nginx"]
   file {
     '/etc/ssl/openssl.cnf' :
     ensure  => present,
-    source  => template('puppet:///templates/openssl.cnf.erb');
+    source  => 'puppet:///templates/openssl.cnf.erb';
     "/etc/ssl/CA/certs" :
     ensure  => directory,
     require => File['/etc/ssl/CA'];
