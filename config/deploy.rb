@@ -6,7 +6,7 @@ set :application, "capistrano-nginx-ssl"
 set :ssh_private_key, File.expand_path("#{ENV['HOME']}/.ssh/id_rsa")
 set :ssh_options,{keys: fetch(:ssh_private_key), forward_agent: true}
 
-set :repository,  "git@github.com:petems/cap-deploy-website.git"
+set :repository,  "git@github.com:petems/capistrano-nginx-ssl.git"
 
 set :default_stage, "vagrant"
 set :stages, %w(vagrant staging production)
