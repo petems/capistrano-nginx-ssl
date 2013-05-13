@@ -24,7 +24,7 @@ file { '/etc/nginx/sites-enabled/default':
   ensure  => present,
   mode    => '0644',
   owner    => 'root',
-  source  => template('puppet:///files/modules/nginx/etc/default')
+  source  => 'puppet:///files/modules/nginx/etc/default'
 }
 
 }
