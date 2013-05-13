@@ -231,7 +231,7 @@ Package["nginx"],
 
 file { '/var/www/index.html':
 ensure  => present,
-source  => '/etc/puppet/files/index.html'
+content  => '<html>test</html>'
 }
 
 exec { 'apt-get update':
