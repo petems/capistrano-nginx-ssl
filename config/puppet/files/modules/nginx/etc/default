@@ -1,0 +1,27 @@
+server {
+  server_name         localhost;
+  listen              443 ssl;
+  ssl                 on;
+
+  error_log /var/log/nginx/error.log debug;
+
+  ssl_certificate     /etc/nginx/ssl/server.crt;
+  ssl_certificate_key /etc/nginx/ssl/server.key;
+  ssl_client_certificate /etc/nginx/ssl/ca.crt;
+  ssl_crl /etc/ssl/CA/crls/crl.pem;
+  ssl_verify_client on;
+
+  add_header Strict-Transport-Security max-age=31536000;
+
+  location / {
+    root                /var/www;
+    index               index.html;
+    add_header  DN      $ssl_client_s_dn;
+  }
+
+  location /gateway {
+      proxy_pass http://192.168.1.64:8080/gateway;
+      proxy_set_header  DN      $ssl_client_s_dn;
+      proxy_set_header  X-Real-IP  $remote_addr;
+  }
+}
