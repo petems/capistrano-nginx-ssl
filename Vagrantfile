@@ -7,4 +7,5 @@ Vagrant::Config.run do |config|
   warn "Guest VM will listen on #{guest_address}"
   config.ssh.forward_agent = true
   config.vm.network :hostonly, guest_address
+  config.vm.provision :shell, :path => "vagrant.sh"
 end
