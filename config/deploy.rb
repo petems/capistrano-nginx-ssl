@@ -2,11 +2,7 @@ require 'capistrano/ext/puppetize'
 require 'capistrano/ext/multistage'
 
 set :application, "capistrano-nginx-ssl"
-
-set :ssh_private_key, File.expand_path("#{ENV['HOME']}/.ssh/id_rsa")
-set :ssh_options,{keys: fetch(:ssh_private_key), forward_agent: true}
-
-set :repository,  "git@github.com:petems/capistrano-nginx-ssl.git"
+set :repository,  "https://github.com/petems/capistrano-nginx-ssl/"
 
 set :default_stage, "vagrant"
 set :stages, %w(vagrant staging production)
