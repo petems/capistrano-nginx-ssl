@@ -24,7 +24,7 @@ file { '/etc/nginx/sites-enabled/default':
   ensure  => present,
   mode    => '0644',
   owner    => 'root',
-  source  => '/capistrano-nginx-ssl/capistrano-nginx-ssl/current/config/puppet/files/modules/nginx/etc/default'
+  content => template('default.erb'),
 }
 
 }
@@ -45,16 +45,16 @@ class openssl {
 }
 
 file { '/etc/nginx/ssl' :
-ensure  => 'directory',
-recurse => true,
-require => Class["nginx"]
+  ensure  => 'directory',
+  recurse => true,
+  require => Class["nginx"]
 }
 
   # Creating file structure for CA
   file {
     '/etc/ssl/openssl.cnf' :
     ensure  => present,
-    source  => '/capistrano-nginx-ssl/capistrano-nginx-ssl/current/config/puppet/files/modules/openssl/openssl.cnf';
+    content => template('openssl.cnf.erb');
     "/etc/ssl/CA/certs" :
     ensure  => directory,
     require => File['/etc/ssl/CA'];
