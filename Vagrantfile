@@ -1,7 +1,6 @@
 Vagrant::Config.run do |config|
-  config.vm.box = "UbuntuServer12.04amd64.box"
-
-  config.vm.box_url = "http://goo.gl/8kWkm"
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   guest_address = '192.168.30.15'
   warn "Guest VM will listen on #{guest_address}"
