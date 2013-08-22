@@ -12,7 +12,7 @@ vagrant up
 bundle exec cap vagrant deploy
 ```
 
-###Testing SSH is working with curlCurl
+###Testing SSH is working with cURL
 
 ```
 vagrant ssh
